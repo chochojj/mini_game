@@ -1,10 +1,17 @@
 import React from 'react';
-import RunGame from './pages/RunGame';
+import { createGlobalStyle } from 'styled-components';
+
+import Worldle from './games/Wordle';
+
+const GlobalStyle = createGlobalStyle``
+  
+
 
 function GameBox() {
   return (
     <div className="App">
-      <RunGame/>
+      <GlobalStyle/>
+      <Worldle/>
     </div>
   );
 }
