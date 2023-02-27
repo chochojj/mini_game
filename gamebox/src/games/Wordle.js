@@ -14,19 +14,26 @@ const WordGame = styled.div`
 
 function Worldle() {
     const [check, setChecked] = useState(["0", "1", "2", "3", "4"])
+    const [done, setDone] = useState('')
+    const [text, setText] = useState("")
+
+    const onChange = (e) => {
+      setText(e.target.value);
+    };
+
+    console.log(text);
+    console.log(check)
 
     let answer = 'abcde';
-
-    // const checkWord = 
 
 
   return (
     <WordGame>
-        <input className='input'></input>
-        <input className='input'></input>
-        <input className='input'></input>
-        <input className='input'></input>
-        <input className='input'></input>
+        <input onChange={onChange} className='input'></input>
+        <input onChange={onChange} className='input'></input>
+        <input onChange={onChange} className='input'></input>
+        <input onChange={onChange} className='input'></input>
+        <input onChange={onChange} className='input'></input>
         <button >얍 !</button>
     </WordGame>
   );
