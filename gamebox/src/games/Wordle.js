@@ -13,7 +13,7 @@ const WordGame = styled.div`
 `
 
 function Worldle() {
-    const [check, setChecked] = useState(['01234'])
+    const [check, setChecked] = useState([''])
     const [idx, setIdx] = useState(0)
     const [text, setText] = useState("")
 
@@ -41,7 +41,7 @@ function Worldle() {
         <input onChange={(e, idx) => onChange(e, 2)} className='input'></input>
         <input onChange={(e, idx) => onChange(e, 3)} className='input'></input>
         <input onChange={(e, idx) => onChange(e, 4)} className='input'></input>
-        <button onClick={correctWord}>얍 !</button>
+        <button >얍 !</button>
     </WordGame>
   );
 }
