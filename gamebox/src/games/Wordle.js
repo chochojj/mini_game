@@ -13,7 +13,7 @@ const WordGame = styled.div`
 `
 
 function Worldle() {
-    const [check, setChecked] = useState('abcde')
+    const [check, setChecked] = useState(["0", "1", "2", "3", "4"])
 
     let answer = 'abcde';
 
