@@ -13,28 +13,35 @@ const WordGame = styled.div`
 `
 
 function Worldle() {
-    const [check, setChecked] = useState(["0", "1", "2", "3", "4"])
-    const [done, setDone] = useState('')
+    const [check, setChecked] = useState(['01234'])
+    const [idx, setIdx] = useState(0)
     const [text, setText] = useState("")
 
-    const onChange = (e) => {
+    const onChange = (e, idx) => {
       setText(e.target.value);
+      setIdx(idx)
     };
 
-    console.log(text);
+    console.log(text)
+    console.log(idx)
     console.log(check)
 
+
     let answer = 'abcde';
+
+    // const correctWord = () => {
+    //   if(check)
+    // }
 
 
   return (
     <WordGame>
-        <input onChange={onChange} className='input'></input>
-        <input onChange={onChange} className='input'></input>
-        <input onChange={onChange} className='input'></input>
-        <input onChange={onChange} className='input'></input>
-        <input onChange={onChange} className='input'></input>
-        <button >얍 !</button>
+        <input onChange={(e, idx) => onChange(e, 0)} className='input'></input>
+        <input onChange={(e, idx) => onChange(e, 1)} className='input'></input>
+        <input onChange={(e, idx) => onChange(e, 2)} className='input'></input>
+        <input onChange={(e, idx) => onChange(e, 3)} className='input'></input>
+        <input onChange={(e, idx) => onChange(e, 4)} className='input'></input>
+        <button onClick={correctWord}>얍 !</button>
     </WordGame>
   );
 }
