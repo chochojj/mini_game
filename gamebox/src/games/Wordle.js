@@ -22,16 +22,18 @@ function Worldle() {
       setIdx(idx)
     };
 
-    console.log(text)
-    console.log(idx)
-    console.log(check)
+    // console.log(text)
+    // console.log(idx)
+    // console.log(check)
 
 
     let answer = 'abcde';
-
-    // const correctWord = () => {
-    //   if(check)
-    // }
+    //문자열에 인덱스 순서로 넣어줘야하는데
+    //애초에 빈문자열이면 4번째 인덱스에 넣을 수가 없음
+    
+    const correctWord = () => {
+      if(check)
+    }
 
 
   return (
