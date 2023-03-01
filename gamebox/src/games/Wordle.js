@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const WordGame = styled.div`
@@ -22,18 +22,22 @@ function Worldle() {
       setIdx(idx)
     };
 
-    // console.log(text)
-    // console.log(idx)
-    // console.log(check)
+    useEffect(() => {
+      console.log(text)
+      console.log(idx)
+      console.log(check)
+    });
+
+    
 
 
     let answer = 'abcde';
     //문자열에 인덱스 순서로 넣어줘야하는데
     //애초에 빈문자열이면 4번째 인덱스에 넣을 수가 없음
     
-    const correctWord = () => {
-      if(check)
-    }
+    // const correctWord = () => {
+    //   if(check)
+    // }
 
 
   return (
