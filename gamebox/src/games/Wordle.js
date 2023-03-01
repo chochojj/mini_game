@@ -17,6 +17,9 @@ function Worldle() {
     const [idx, setIdx] = useState(0)
     const [text, setText] = useState("")
 
+    //일단 입력된 값이랑 일치하는지 테스트 해 볼 임의의 답
+    let answer = 'abcde';
+
     const onChange = (e, idx) => {
       setText(e.target.value);
       setIdx(idx)
@@ -31,7 +34,7 @@ function Worldle() {
     
 
 
-    let answer = 'abcde';
+    
     //문자열에 인덱스 순서로 넣어줘야하는데
     //애초에 빈문자열이면 4번째 인덱스에 넣을 수가 없음
     
