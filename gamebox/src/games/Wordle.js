@@ -13,23 +13,11 @@ const WordGame = styled.div`
 `
 
 function Worldle() {
-    const [check, setChecked] = useState([''])
-    const [idx, setIdx] = useState(0)
-    const [text, setText] = useState("")
-
-    //일단 입력된 값이랑 일치하는지 테스트 해 볼 임의의 답
-    let answer = 'abcde';
-
-    const onChange = (e, idx) => {
-      setText(e.target.value);
-      setIdx(idx)
-    };
-
-    useEffect(() => {
-      console.log(text)
-      console.log(idx)
-      console.log(check)
-    });
+    const [word, setWord] = useState('apple')
+    const [letters, setLetters] = useState(null);
+    const [letterInputs, setletterInputs] = useState([]);
+    const [termsValidation, setTermsValidation] = useState(false);
+    const [gameState, setGame] = useState(false);
 
     
 
