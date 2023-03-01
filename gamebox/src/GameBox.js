@@ -3,7 +3,14 @@ import { createGlobalStyle } from 'styled-components';
 
 import Worldle from './games/Wordle';
 
-const GlobalStyle = createGlobalStyle``
+const GlobalStyle = createGlobalStyle`
+  body {
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none
+  }
+`
   
 
 
