@@ -112,13 +112,13 @@ function Worldle() {
 
   return (
     <WordGame>
-       <Title>🥕 My WORDLE 🐇</Title>
+       <Title>🥕 My TORDLE 🐇</Title>
        <GameSection>
         <Board>
-          {[0, 1, 2, 3, 4, 5].map((i) => (
-            <KeyRow key={i}>
-              {[0, 1, 2, 3, 4].map((i) => (
-                <Key key={i}></Key>
+          {[0, 1, 2, 3, 4, 5].map((el) => (
+            <KeyRow key={el}>
+              {[0, 1, 2, 3, 4].map((el) => (
+                <Key key={el}></Key>
               ))}
             </KeyRow>
           ))}
@@ -126,19 +126,19 @@ function Worldle() {
       </GameSection>
       <Keyboard>
         <KeyboardRow>
-          {["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"].map((key) => (
-            <KeyboardButton>{key}</KeyboardButton>
+          {["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"].map((el) => (
+            <KeyboardButton>{el}</KeyboardButton>
           ))}
         </KeyboardRow>
         <KeyboardRow>
-          {["a", "s", "d", "f", "g", "h", "j", "k", "l"].map((key) => (
-            <KeyboardButton>{key}</KeyboardButton>
+          {["a", "s", "d", "f", "g", "h", "j", "k", "l"].map((el) => (
+            <KeyboardButton>{el}</KeyboardButton>
           ))}
         </KeyboardRow>
         <KeyboardRow>
           {["enter", "z", "x", "c", "v", "b", "n", "m", "backspace"].map(
-            (key) => (
-              <KeyboardButton>{key}</KeyboardButton>
+            (el) => (
+              <KeyboardButton>{el}</KeyboardButton>
             )
           )}
         </KeyboardRow>
