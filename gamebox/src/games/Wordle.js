@@ -69,7 +69,7 @@ const Key = styled.div`
 
 const Keyboard = styled.section`
   height: 200px;
-  width: 100%;
+  width: 115%;
   display: flex;
   flex-direction: column;
   margin-top: 20px;
@@ -81,6 +81,7 @@ const KeyboardRow = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  
 `;
 
 const KeyboardButton = styled.button`
@@ -93,10 +94,10 @@ const KeyboardButton = styled.button`
   flex: 1;
   border: 0;
   border-radius: 4px;
-  background-color: #818384;
+  background-color: rgba(0,0,0,0.3);
   font-weight: bold;
   text-transform: uppercase;
-  color: #d7dadc;
+  color: white;
 
   cursor: pointer;
   user-select: none;
@@ -104,6 +105,9 @@ const KeyboardButton = styled.button`
   &:last-of-type {
     margin: 0;
   }
+`;
+const Flex = styled.div`
+  ${({ item }) => `flex: ${item};`}
 `;
 
 function Worldle() {
@@ -127,21 +131,27 @@ function Worldle() {
       <Keyboard>
         <KeyboardRow>
           {["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"].map((el) => (
-            <KeyboardButton>{el}</KeyboardButton>
+             <KeyboardButton>
+             {el}
+           </KeyboardButton>
           ))}
         </KeyboardRow>
         <KeyboardRow>
-          {["a", "s", "d", "f", "g", "h", "j", "k", "l"].map((el) => (
-            <KeyboardButton>{el}</KeyboardButton>
-          ))}
+        <Flex item={0.5} />
+        {["a", "s", "d", "f", "g", "h", "j", "k", "l"].map((el) => (
+          <KeyboardButton>{el}</KeyboardButton>
+        ))}
+        <Flex item={0.5} />
         </KeyboardRow>
         <KeyboardRow>
-          {["enter", "z", "x", "c", "v", "b", "n", "m", "backspace"].map(
-            (el) => (
-              <KeyboardButton>{el}</KeyboardButton>
-            )
-          )}
-        </KeyboardRow>
+        {[`enter`, "z", "x", "c", "v", "b", "n", "m", `Back`].map(
+          (el) => (
+            <KeyboardButton>
+              {el}
+            </KeyboardButton>
+          )
+        )}
+      </KeyboardRow>
       </Keyboard>
     </WordGame>
   );
