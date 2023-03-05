@@ -171,10 +171,10 @@ const fetchWord = (word) => {
 };
 
 function Worldle() {
-  const wordOfTheDay = "apple";
+  const answer = "apple";
 
   const [guesses, setGuesses] = useState({ ...newGame });
-  const [markers, setMarkers] = useState({
+  const [checked, setChecked] = useState({
     0: Array.from({ length: wordLength }).fill(""),
     1: Array.from({ length: wordLength }).fill(""),
     2: Array.from({ length: wordLength }).fill(""),
@@ -184,6 +184,10 @@ function Worldle() {
   });
   const [isModalVisible, setModalVisible] = useState(false);
 
+  // console.log(guesses)
+  // console.log(checked)
+
+  
   let letterIndex = useRef(0);
   let round = useRef(0);
 
@@ -195,55 +199,53 @@ function Worldle() {
   const submit = () => {
     const _round = round.current;
 
-    const updatedMarkers = {
-      ...markers,
+    const updateColor = {
+      ...checked,
     };
 
-    const tempWord = wordOfTheDay.split("");
+    const curWord = answer.split("");
 
-    const leftoverIndices = [];
+    const newArr = [];
 
     // 맞는 자리에 녹색
-    tempWord.forEach((letter, index) => {
+    curWord.forEach((letter, index) => {
       const guessedLetter = guesses[_round][index];
 
       if (guessedLetter === letter) {
-        updatedMarkers[_round][index] = "green";
-        tempWord[index] = "";
+        updateColor[_round][index] = "green";
+        curWord[index] = "";
       } else {
-        leftoverIndices.push(index);
+        newArr.push(index);
       }
     });
 
-    if (updatedMarkers[_round].every((guess) => guess === "green")) {
-      setMarkers(updatedMarkers);
+    if (updateColor[_round].every((guess) => guess === "green")) {
+      setChecked(updateColor);
       win();
       return;
     }
 
     //틀린 단어 찾기
-    if (leftoverIndices.length) {
-      leftoverIndices.forEach((index) => {
+    if (newArr.length) {
+      newArr.forEach((index) => {
         const guessedLetter = guesses[_round][index];
-        const correctPositionOfLetter = tempWord.indexOf(guessedLetter);
-
+        const correctPositionOfLetter = curWord.indexOf(guessedLetter);
+        console.log(newArr)
         if (
-          tempWord.includes(guessedLetter) &&
+          curWord.includes(guessedLetter) &&
           correctPositionOfLetter !== index
         ) {
           // 틀린자리에 노란색
-          updatedMarkers[_round][index] = "yellow";
-          tempWord[correctPositionOfLetter] = "";
+          updateColor[_round][index] = "yellow";
+          curWord[correctPositionOfLetter] = "";
         } else {
           // 없는 자리에 회색
-          updatedMarkers[_round][index] = "grey";
+          updateColor[_round][index] = "grey";
         }
       });
     }
-    
 
-
-    setMarkers(updatedMarkers);
+    setChecked(updateColor);
     round.current = _round + 1;
     letterIndex.current = 0;
   };
@@ -303,7 +305,7 @@ function Worldle() {
 
   const handleKeyDown = (e) => {
     const pressedKey = e.key.toLowerCase();
-    console.log(e.key)
+    // console.log(e.key)
     if (allKeys.includes(pressedKey)) {
       enterGuess(pressedKey);
     }
@@ -325,7 +327,7 @@ function Worldle() {
           {Object.values(guesses).map((word, wordIndex) => (
               <KeyRow key={wordIndex}>
                 {word.map((letter, i) => (
-                  <Key key={i} hint={markers[wordIndex][i]}>
+                  <Key key={i} hint={checked[wordIndex][i]}>
                     {letter}
                   </Key>
                 ))}
