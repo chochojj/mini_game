@@ -183,7 +183,6 @@ function Worldle() {
     5: Array.from({ length: wordLength }).fill(""),
   });
   const [isModalVisible, setModalVisible] = useState(false);
-  const [isShared, setIsShared] = useState(false);
 
   let letterIndex = useRef(0);
   let round = useRef(0);
@@ -241,6 +240,8 @@ function Worldle() {
         }
       });
     }
+    
+
 
     setMarkers(updatedMarkers);
     round.current = _round + 1;
@@ -291,13 +292,6 @@ function Worldle() {
     }
   };
 
-  const getDayOfYear = () => {
-    const now = new Date();
-    const start = new Date(now.getFullYear(), 0, 0);
-    const diff = now - start;
-    const oneDay = 1000 * 60 * 60 * 24;
-    return Math.floor(diff / oneDay);
-  };
 
   const handleClick = (key) => {
     const pressedKey = key.toLowerCase();
@@ -305,35 +299,7 @@ function Worldle() {
     enterGuess(pressedKey);
   };
 
-  const copyMarkers = () => {
-    let shareText = `Wordle ${getDayOfYear()}`;
-    let shareGuesses = "";
-
-    const amountOfGuesses = Object.entries(markers)
-      .filter(([_, guesses]) => !guesses.includes(""))
-      .map((round) => {
-        const [_, guesses] = round;
-
-        guesses.forEach((guess) => {
-          if (guess === "green") {
-            shareGuesses += "🟩";
-          } else if (guess === "yellow") {
-            shareGuesses += "🟨";
-          } else {
-            shareGuesses += "⬛️";
-          }
-        });
-
-        shareGuesses += "\n";
-
-        return "";
-      });
-
-    shareText += ` ${amountOfGuesses.length}/6\n${shareGuesses}`;
-
-    navigator.clipboard.writeText(shareText);
-    setIsShared(true);
-  };
+  
 
   const handleKeyDown = (e) => {
     const pressedKey = e.key.toLowerCase();
