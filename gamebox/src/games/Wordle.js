@@ -8,7 +8,7 @@ const WordGame = styled.div`
   flex-direction: column;
   align-items: center;
 
-  width: 100%;
+  width: 130%;
   max-width: 500px;
   margin: 0 auto;
   margin-top: 15px;
@@ -185,7 +185,7 @@ function Worldle() {
   const [isModalVisible, setModalVisible] = useState(false);
 
   // console.log(guesses)
-  // console.log(checked)
+  console.log(checked)
 
   
   let letterIndex = useRef(0);
@@ -198,7 +198,7 @@ function Worldle() {
 
   const submit = () => {
     const _round = round.current;
-
+    console.log(_round)
     const updateColor = {
       ...checked,
     };
@@ -339,7 +339,7 @@ function Worldle() {
       {keyboardRows.map((keys, i) => (
             <KeyboardRow key={i}>
               {i === 1 && <Flex item={0.5} />}
-              {keys.map((key) => (
+              {keys.map((key, index) => (
                 <KeyboardButton
                   key={key}
                   onClick={() => handleClick(key)}
