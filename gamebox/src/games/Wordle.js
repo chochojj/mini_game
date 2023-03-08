@@ -11,7 +11,7 @@ const WordGame = styled.div`
   width: 130%;
   max-width: 500px;
   margin: 0 auto;
-  margin-top: 15px;
+  margin-top: 80px;
 
 `
 const Title = styled.header`
@@ -20,7 +20,7 @@ const Title = styled.header`
   align-items: center;
   height: 40px;
   width: 100%;
-
+  margin-bottom: 20px;
   border-bottom: 1px solid #929292;
 
   font-weight: 500;
@@ -67,6 +67,21 @@ const Key = styled.div`
   /* &:nth-child(2n){
     border: 2px solid #e37c5d;
   } */
+
+  ${({ hint }) => {
+    console.log("hint:", hint, hint === "green", hint === "yellow");
+    if (hint === "green") {
+      return `background-color: #8edb72;`;
+    }
+    if (hint === "yellow") {
+      return `background-color: #e37c5d;`;
+    }
+    if (hint === "grey"){
+      return `background-color: #c4c4c4;`;
+    }
+  }}
+
+  user-select: none;
 `;
 
 const Keyboard = styled.section`
@@ -326,7 +341,7 @@ function Worldle() {
         <Board>
           {Object.values(guesses).map((word, wordIndex) => (
               <KeyRow key={wordIndex}>
-                {word.map((letter, i) => (
+                {word.map((letter, i, ) => (
                   <Key key={i} hint={checked[wordIndex][i]}>
                     {letter}
                   </Key>
